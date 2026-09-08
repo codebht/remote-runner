@@ -1,0 +1,46 @@
+name: 🚀 Open-Source Cloud Terminal Execution Engine
+
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: '⌨️ Enter the terminal build command payload to run'
+        required: true
+        type: string
+        default: 'echo "Hello Fast Computer" && lscpu'
+      runner_os:
+        description: '🖥️ Select Cloud Machine Architecture'
+        required: true
+        type: choice
+        options:
+          - 'ubuntu-latest (Fastest Linux VM)'
+          - 'ubuntu-24.04 (Stable Canonical Jammy)'
+        default: 'ubuntu-latest'
+
+jobs:
+  cloud_build_environment:
+    name: Running Custom Toolchain Payload
+    runs-on: ${{ sed -e 's/ (.*//' <<< inputs.runner_os }}
+    
+    steps:
+      - name: 📂 Initialize Environment & Project Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚙️ System Profiles & Hardware Analytics
+        run: |
+          echo "=================================================="
+          echo "🌐 OPERATING SYSTEM PROFILES:"
+          uname -a
+          echo "=================================================="
+          echo "💿 HARDWARE SPECIFICATIONS:"
+          lscpu | grep "Model name\|CPU(s):\|Thread(s)" || true
+          echo "=================================================="
+
+      - name: ⚡ EXECUTE CUSTOM BUILD COMMAND
+        run: |
+          echo "🚀 Starting user custom toolchain script..."
+          echo "--------------------------------------------------"
+          ${{ inputs.command }}
+          echo "--------------------------------------------------"
+          echo "✅ Custom script execution pipeline completed successfully."
+          
