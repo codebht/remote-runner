@@ -5,7 +5,8 @@ Control high-powered GitHub computing resources directly from your mobile phone 
 ---
 
 ## 🛠️ Step 1: Fork and Enable Actions
-1. **Fork** this repository onto your GitHub account profile.
+1. **Fork** this repository onto your GitHub account profile. 
+   *(Note: Ensure the forked repository keeps the name `remote` so the installer tracks it properly).*
 2. Navigate to the **Actions** tab on your newly forked repository.
 3. Click the green confirmation button that says: **"I understand my workflows, go ahead and enable them"**.
 
@@ -16,25 +17,23 @@ To link your terminal to your GitHub profile, generate a **Personal Access Token
 
 ## 📲 Step 3: Automated Script Installation
 
-Open your terminal window on a **Linux PC** or your mobile phone's **Termux app**, and execute the one-line setup installer stream below (Replace `YOUR_USERNAME/YOUR_FORKED_REPO` with your repository details):
+Open your terminal window on a **Linux PC** or your mobile phone's **Termux app** and execute the installation setup line below. 
 
-### For Linux PC Terminal:
+⚠️ **CRITICAL STEP:** Before copying and running the command, you **MUST** replace `YOUR_GITHUB_USERNAME` in the link with your **own** GitHub username so the terminal downloads `setup.sh` directly from your personal fork's raw content link!
+
+### Installation Command:
 ```bash
 curl -sSL https://githubusercontent.com -o setup.sh && chmod +x setup.sh && ./setup.sh && rm setup.sh
 ```
 
-### For Android Termux Application:
-*Make sure curl and unzip are installed first (`pkg install curl unzip -y`)*
-```bash
-curl -sSL https://githubusercontent.com -o setup.sh && chmod +x setup.sh && ./setup.sh && rm setup.sh
-```
+*(Note: During setup, the script will explicitly ask you to input your **GitHub Personal Access Token** and your **GitHub Username** separately).*
 
 ### 🔄 Apply Changes:
-Once the script prompts you for your credentials and closes, apply your adjustments by running:
+Once the script finishes executing, reload your terminal profile adjustments by running:
 ```bash
 source ~/.bashrc
 ```
-*(If you are running Zsh on Linux, run `source ~/.zshrc`, or `source ~/.bash_profile` in Termux).*
+*(If you are running Zsh on Linux, run `source ~/.zshrc`, or `source ~/.bash_profile` inside Termux).*
 
 ---
 
